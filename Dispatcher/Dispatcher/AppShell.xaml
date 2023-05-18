@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Dispatcher.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Dispatcher.Pages" >
+
+    <FlyoutItem Title="Basic Data Management" >      
+        
+        <ShellContent Title="AgvManagementPage" 
+            ContentTemplate="{DataTemplate pages:AgvManagementPage}" />
+        
+        <ShellContent Title="ParamaterSettingPage" 
+            ContentTemplate="{DataTemplate pages:ParamaterSettingPage}" />      
+        
+    </FlyoutItem>
+
+    <FlyoutItem Title="Real Time" >
+        
+        <ShellContent Title="RealTimePage" 
+            ContentTemplate="{DataTemplate pages:RealTimePage}"/>
+        
+    </FlyoutItem>
+    
+    <FlyoutItem Title="About" >
+        
+        <ShellContent
+            ContentTemplate="{DataTemplate pages:AboutPage}"/>
+        
+    </FlyoutItem>
+
+    <FlyoutItem Title="Test" >
+        
+        <ShellContent
+            ContentTemplate="{DataTemplate pages:TestPage}"/>
+        
+    </FlyoutItem>
+    
+</Shell>

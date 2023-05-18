@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:BaseDataMap.BaseConverter;assembly=BaseDataMap"
+             xmlns:agv="clr-namespace:BaseDataMap.AgvMaps;assembly=BaseDataMap"
+             xmlns:dispatcher="clr-namespace:Dispatcher"
+             x:Class="Dispatcher.Pages.TestPage"
+             
+             Title="TestPage">
+    <ContentPage.Resources>
+        <converter:IntToBoolConverter x:Key="intToBool" />
+        <agv:RunTypeMap x:Key="runTypeMap"/>
+        <dispatcher:TestViewModel x:Key="testViewModel"/>
+        <agv:RunTypeConverter x:Key="runTypeConverter"/>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        
+        <StackLayout BindingContext="{x:StaticResource runTypeMap}">
+            <Picker ItemsSource="{Binding Items}" ItemDisplayBinding="{Binding IDDisp}" />
+        </StackLayout>
+
+        <!--<StackLayout >
+            <Picker 
+                ItemsSource="{Binding Source={x:StaticResource runTypeMap}, Path=Items}" 
+                ItemDisplayBinding="{Binding Path=ID, Converter={StaticResource runTypeConverter}}"/>
+        </StackLayout>-->
+
+        <!--<StackLayout >
+            <Picker 
+                ItemsSource="{Binding Source={agv:RunTypeMap Items}}" 
+                ItemDisplayBinding="{Binding Source={agv:RunTypeMap Disp}}" />
+        </StackLayout>-->
+
+
+        <StackLayout BindingContext="{x:StaticResource runTypeMap}">
+            <Label Text="{Binding TestText}" BindingContext="{x:StaticResource testViewModel}"
+                   FontSize="80"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End" />
+        </StackLayout>
+        
+    </StackLayout>
+    
+    <!--<StackLayout Padding="10, 0" BindingContext="{x:StaticResource testViewModel}">
+
+        <Label Text="{Binding TestText}"
+                   FontSize="80"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End" />
+
+        <Picker ItemsSource="{Binding monkeyList}" />
+
+        <Entry x:Name="entry1"
+               Text=""
+               Placeholder="enter search term"
+               VerticalOptions="Center" />
+        <Button
+            
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="{Binding Source={x:Reference entry1},
+                                    Path=Text.Length,
+                                    Converter={StaticResource intToBool}}" />
+        <Entry x:Name="entry2"
+               Text=""
+               Placeholder="enter destination"
+               VerticalOptions="Center" />
+        <Button Text="Submit"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsEnabled="{Binding Source={x:Reference entry2},
+                                    Path=Text.Length,
+                                    Converter={StaticResource intToBool}}" />
+
+
+        
+        <StackLayout Padding="10">
+            <StackLayout VerticalOptions="Fill"
+                     BindingContext="{x:Reference slider}">
+
+                <Label  
+                   FontSize="80"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   Rotation="{Binding Value}" />
+
+                <BoxView Color="#800000FF"
+                     WidthRequest="180"
+                     HeightRequest="40"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Start"
+                     Rotation="{Binding Value}" />
+            </StackLayout>
+
+            <Slider x:Name="slider"
+                Maximum="360" />
+        </StackLayout>
+    </StackLayout>-->
+</ContentPage>
